@@ -1,4 +1,4 @@
-(defproject lein-standalone-repl "0.1.2"
+(defproject lein-standalone-repl "0.1.3"
   :description "Backport of a bugfix for trampoline repl."
   :url "https://github.com/technomancy/lein-standalone-repl"
   :license {:name "Eclipse Public License"
