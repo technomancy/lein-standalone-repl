@@ -6,11 +6,10 @@
             [leiningen.core.user :as user]))
 
 (defn- trampoline-repl [project]
-  (let [options (repl/options-for-reply project :port (repl/repl-port project))
-        profiles [(:repl (user/profiles) repl/profile) repl/trampoline-profile]]
+  (let [profiles [(:repl (user/profiles) repl/profile) repl/trampoline-profile]]
     (eval/eval-in-project
-     (project/merge-profiles project profiles)
-     `(reply.main/launch-standalone options})
+     (project/merge-profiles project (repl/options-for-reply project))
+     `(reply.main/launch-standalone options)
      `(require ~@(#'leiningen.repl/init-requires project 'reply.main)))))
 
 (defn standalone-repl
