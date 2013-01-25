@@ -6,7 +6,7 @@
             [leiningen.core.user :as user]))
 
 (defn- trampoline-repl [project]
-  (let [profiles [(:repl (user/profiles) repl/profile) repl/trampoline-profile]]
+  (let [profiles (repl/profiles-for project true true)]
     (eval/eval-in-project
      (project/merge-profiles project profiles)
      `(reply.main/launch-standalone ~(repl/options-for-reply project))
